@@ -1,17 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// This is a simple example of exporting a C++ function to R. You can
-// source this function into an R session using the Rcpp::sourceCpp 
-// function (or via the Source button on the editor toolbar). Learn
-// more about Rcpp at:
-//
-//   http://www.rcpp.org/
-//   http://adv-r.had.co.nz/Rcpp.html
-//   http://gallery.rcpp.org/
-//
-
-
 
 // Function to manually select a direction based on probabilities
 int sampleDirection(const NumericVector& probs) {
@@ -26,37 +15,29 @@ int sampleDirection(const NumericVector& probs) {
   return probs.size() - 1; // Return the last index if none chosen (should not happen)
 }
 
-
-
-
-// [[Rcpp::export]]
-double ackley2D(NumericVector x) {
-  double term1 = -20.0 * exp(-0.2 * sqrt(0.5 * (x[0]* x[0] + x[1]* x[1])));
-  double term2 = -exp(0.5 * (cos(2 * M_PI * x[0]) + cos(2 * M_PI * x[1])));
-  double result = term1 + term2 + 20 + exp(1);
-  return result;
-}
-
-
-// [[Rcpp::export]]
-double griewank2D(Rcpp::NumericVector x) {
-  double sum = 0.0;
-  double prod = 1.0;
-  
-  for(int i = 0; i < x.size(); i++) {
-    sum += (x[i] * x[i]) / 4000.0;
-    prod *= cos(x[i] / sqrt(i+1));
-  }
-  
-  return sum - prod + 1;
-}
-
-
+//' Ball's Algorithm for Stochastic Descent (ballsd)
+ //'
+ //' This function implements the Ball's Algorithm for Stochastic Descent to
+ //' minimize or maximize an objective function `objFunc` with respect to its parameters.
+ //'
+ //' @param x0 Initial parameters as a numeric vector.
+ //' @param objFunc The objective function to be optimized. It must take a single argument, the parameter vector, and return a single numeric value representing the objective function's value at those parameters.
+ //' @param sinc Step size increase factor, applied when a new parameter set improves the objective function value.
+ //' @param sdec Step size decrease factor, applied when a new parameter set does not improve the objective function value.
+ //' @param pinc Probability increase factor, applied to increase the selection probability of a successful direction.
+ //' @param pdec Probability decrease factor, applied to decrease the selection probability of an unsuccessful direction.
+ //' @param maxIter Maximum number of iterations to perform.
+ //' @return Returns a numeric vector of optimized parameters.
+ //' @examples
+ //' objFunc <- function(x) { sum((x - 1)^2) }  # Simple quadratic objective
+ //' initialParams <- c(0, 0)
+ //' result <- ballsd(initialParams, objFunc, sinc = 2, sdec = 2, pinc = 2, pdec = 2, maxIter = 100)
+ //' @export
 
 // [[Rcpp::export]]
 NumericVector ballsd(NumericVector x0, Function objFunc, 
-                                    double sinc, double sdec, double pinc, double pdec, 
-                                    int maxIter) {
+                     double sinc, double sdec, double pinc, double pdec, 
+                     int maxIter) {
   int n = x0.size();
   int directions = 2 * n;
   NumericVector s(directions);
@@ -99,3 +80,4 @@ NumericVector ballsd(NumericVector x0, Function objFunc,
   
   return x;
 }
+
