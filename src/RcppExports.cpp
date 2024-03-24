@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // ackley2D
 double ackley2D(NumericVector x);
-RcppExport SEXP _ballsdKHCpp_ackley2D(SEXP xSEXP) {
+RcppExport SEXP _ballsdKHCppHW2_ackley2D(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -23,29 +23,7 @@ END_RCPP
 }
 // griewank2D
 double griewank2D(Rcpp::NumericVector x);
-RcppExport SEXP _ballsdKHCpp_griewank2D(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(griewank2D(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// ackley2D
-double ackley2D(NumericVector x);
-RcppExport SEXP _ballsdKHCpp_ackley2D(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(ackley2D(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// griewank2D
-double griewank2D(Rcpp::NumericVector x);
-RcppExport SEXP _ballsdKHCpp_griewank2D(SEXP xSEXP) {
+RcppExport SEXP _ballsdKHCppHW2_griewank2D(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -56,7 +34,7 @@ END_RCPP
 }
 // ballsd
 NumericVector ballsd(NumericVector x0, Function objFunc, double sinc, double sdec, double pinc, double pdec, int maxIter);
-RcppExport SEXP _ballsdKHCpp_ballsd(SEXP x0SEXP, SEXP objFuncSEXP, SEXP sincSEXP, SEXP sdecSEXP, SEXP pincSEXP, SEXP pdecSEXP, SEXP maxIterSEXP) {
+RcppExport SEXP _ballsdKHCppHW2_ballsd(SEXP x0SEXP, SEXP objFuncSEXP, SEXP sincSEXP, SEXP sdecSEXP, SEXP pincSEXP, SEXP pdecSEXP, SEXP maxIterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -73,15 +51,13 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ballsdKHCpp_ackley2D", (DL_FUNC) &_ballsdKHCpp_ackley2D, 1},
-    {"_ballsdKHCpp_griewank2D", (DL_FUNC) &_ballsdKHCpp_griewank2D, 1},
-    {"_ballsdKHCpp_ackley2D", (DL_FUNC) &_ballsdKHCpp_ackley2D, 1},
-    {"_ballsdKHCpp_griewank2D", (DL_FUNC) &_ballsdKHCpp_griewank2D, 1},
-    {"_ballsdKHCpp_ballsd", (DL_FUNC) &_ballsdKHCpp_ballsd, 7},
+    {"_ballsdKHCppHW2_ackley2D", (DL_FUNC) &_ballsdKHCppHW2_ackley2D, 1},
+    {"_ballsdKHCppHW2_griewank2D", (DL_FUNC) &_ballsdKHCppHW2_griewank2D, 1},
+    {"_ballsdKHCppHW2_ballsd", (DL_FUNC) &_ballsdKHCppHW2_ballsd, 7},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_ballsdKHCpp(DllInfo *dll) {
+RcppExport void R_init_ballsdKHCppHW2(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

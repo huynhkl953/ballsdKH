@@ -2,22 +2,17 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 ackley2D <- function(x) {
-    .Call(`_ballsdKHCpp_ackley2D`, x)
+    .Call('_ballsdKHCppHW2_ackley2D', PACKAGE = 'ballsdKHCppHW2', x)
 }
 
 griewank2D <- function(x) {
-    .Call(`_ballsdKHCpp_griewank2D`, x)
+    .Call('_ballsdKHCppHW2_griewank2D', PACKAGE = 'ballsdKHCppHW2', x)
 }
 
-ackley2D <- function(x) {
-    .Call(`_ballsdKHCpp_ackley2D`, x)
-}
-
-griewank2D <- function(x) {
-    .Call(`_ballsdKHCpp_griewank2D`, x)
-}
+#' Ball's Algorithm for Stochastic Descent (ballsd)
+NULL
 
 ballsd <- function(x0, objFunc, sinc, sdec, pinc, pdec, maxIter) {
-    .Call(`_ballsdKHCpp_ballsd`, x0, objFunc, sinc, sdec, pinc, pdec, maxIter)
+    .Call('_ballsdKHCppHW2_ballsd', PACKAGE = 'ballsdKHCppHW2', x0, objFunc, sinc, sdec, pinc, pdec, maxIter)
 }
 
