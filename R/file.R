@@ -1,5 +1,5 @@
-sourceCpp('src/ballsd.cpp')
-sourceCpp('src/SuppFuns.cpp')
+Rcpp::sourceCpp('src/ballsd.cpp')
+Rcpp::sourceCpp('src/SuppFuns.cpp')
 
 ackley2D=function(x){
   ackley2D(x)
